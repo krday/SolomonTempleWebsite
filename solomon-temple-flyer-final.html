@@ -280,13 +280,23 @@ body{font-family:'Source Sans 3',sans-serif;background:#06111e;color:#fff;min-he
     </div>
   </div>
 
-  <div class="fs"><div class="fst">Text Color</div>
+  <div class="fs"><div class="fst">Title Color</div>
     <div class="sw-row">
-      <div class="sw active" style="background:#ffffff;border:1px solid rgba(255,255,255,.3)" onclick="setFC('white',this)" title="White"></div>
-      <div class="sw" style="background:linear-gradient(135deg,#c8991a,#e8b830)" onclick="setFC('gold',this)" title="Gold"></div>
-      <div class="sw" style="background:#1a1a1a;border:1px solid rgba(255,255,255,.2)" onclick="setFC('black',this)" title="Black"></div>
-      <div class="sw" style="background:linear-gradient(135deg,#c0253a,#9b1c2e)" onclick="setFC('red',this)" title="Red"></div>
-      <div class="sw" style="background:linear-gradient(135deg,#1b3d8f,#2a52b0)" onclick="setFC('blue',this)" title="Blue"></div>
+      <div class="sw tc-sw active" style="background:#ffffff;border:1px solid rgba(255,255,255,.3)" onclick="setTC('white',this)" title="White"></div>
+      <div class="sw tc-sw" style="background:linear-gradient(135deg,#c8991a,#e8b830)" onclick="setTC('gold',this)" title="Gold"></div>
+      <div class="sw tc-sw" style="background:#1a1a1a;border:1px solid rgba(255,255,255,.2)" onclick="setTC('black',this)" title="Black"></div>
+      <div class="sw tc-sw" style="background:linear-gradient(135deg,#c0253a,#9b1c2e)" onclick="setTC('red',this)" title="Red"></div>
+      <div class="sw tc-sw" style="background:linear-gradient(135deg,#1b3d8f,#2a52b0)" onclick="setTC('blue',this)" title="Blue"></div>
+    </div>
+  </div>
+
+  <div class="fs"><div class="fst">Body Color</div>
+    <div class="sw-row">
+      <div class="sw fc-sw active" style="background:#ffffff;border:1px solid rgba(255,255,255,.3)" onclick="setFC('white',this)" title="White"></div>
+      <div class="sw fc-sw" style="background:linear-gradient(135deg,#c8991a,#e8b830)" onclick="setFC('gold',this)" title="Gold"></div>
+      <div class="sw fc-sw" style="background:#1a1a1a;border:1px solid rgba(255,255,255,.2)" onclick="setFC('black',this)" title="Black"></div>
+      <div class="sw fc-sw" style="background:linear-gradient(135deg,#c0253a,#9b1c2e)" onclick="setFC('red',this)" title="Red"></div>
+      <div class="sw fc-sw" style="background:linear-gradient(135deg,#1b3d8f,#2a52b0)" onclick="setFC('blue',this)" title="Blue"></div>
     </div>
   </div>
 
@@ -462,6 +472,16 @@ function setFC(n,el){
   el.classList.add("active");
   upd();
 }
+const TC=FC;let cTC="white";
+function setTC(n,el){
+  cTC=n;
+  document.querySelectorAll(".sw").forEach(s=>{
+    if(s.getAttribute("onclick")&&s.getAttribute("onclick").includes("setTC"))
+      s.classList.remove("active");
+  });
+  el.classList.add("active");
+  upd();
+}
 // Light bg flag
 const LIGHT_BGS = ["ltblue","ltgold","ltgray","ltgreen","lavender"];
 
@@ -520,7 +540,7 @@ let guestSrc=null;
 
 function g(id){return document.getElementById(id)}
 function v(id){const e=g(id);return e?e.value:""}
-function setA(n,el){ca=n;document.querySelectorAll(".sw").forEach(s=>s.classList.remove("active"));el.classList.add("active");upd()}
+function setA(n,el){ca=n;document.querySelectorAll(".sw").forEach(s=>{if(s.getAttribute("onclick")&&s.getAttribute("onclick").includes("setA"))s.classList.remove("active");});el.classList.add("active");upd()}
 function setBG(n,el){cBG=n;document.querySelectorAll(".sw-sq").forEach(s=>s.classList.remove("active"));el.classList.add("active");upd()}
 function setDeco(n,el){cDeco=n;document.querySelectorAll(".bg-opt").forEach(b=>b.classList.remove("active"));el.classList.add("active");upd()}
 function setFont(n,el){cFont=n;document.querySelectorAll(".fp").forEach(b=>b.classList.remove("active"));el.classList.add("active");upd()}
@@ -863,7 +883,7 @@ function upd(){
     tEl.textContent=v("eTitle")||"Event Title";
     tEl.className=`f-title title-${cFont}`;
     // On light bgs default text to dark unless user picked a color
-    tEl.style.color = isLightBG && cFC==="white" ? "#111111" : FC[cFC];
+    tEl.style.color = isLightBG && cTC==="white" ? "#111111" : TC[cTC];
   }
   // Adjust body text colors for light vs dark backgrounds
   const bodyTextColor = isLightBG ? "rgba(10,15,40,.9)" : "rgba(255,255,255,.7)";
@@ -1014,6 +1034,8 @@ function resetForm(){
   // Reset accent and bg to defaults
   setA("gold", document.querySelector(".sw"));
   setBG("navy", document.querySelector(".sw-sq"));
+  cTC="white";document.querySelectorAll(".tc-sw").forEach((s,i)=>i===0?s.classList.add("active"):s.classList.remove("active"));
+  cFC="white";document.querySelectorAll(".fc-sw").forEach((s,i)=>i===0?s.classList.add("active"):s.classList.remove("active"));
   setDeco("arcs", document.querySelector(".bg-opt"));
   setFont("script", document.querySelector(".fp"));
   upd();
