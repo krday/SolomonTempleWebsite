@@ -1022,12 +1022,31 @@ function resetForm(){
 function dlFlyer(){
   const btn=document.querySelector(".btn-d");
   btn.textContent="⏳ Generating...";btn.disabled=true;
-  html2canvas(g("flyer"),{scale:2,useCORS:true,allowTaint:true,backgroundColor:null,logging:false}).then(canvas=>{
+  const el=g("flyer");
+  // Force fixed desktop dimensions before capture — overrides any mobile media query
+  const prevW=el.style.width,prevMin=el.style.minWidth;
+  el.style.width="650px";el.style.minWidth="650px";
+  html2canvas(el,{
+    scale:2,
+    useCORS:true,
+    allowTaint:true,
+    backgroundColor:null,
+    logging:false,
+    width:650,
+    height:el.scrollHeight,
+    windowWidth:1200,
+    windowHeight:900
+  }).then(canvas=>{
+    el.style.width=prevW;el.style.minWidth=prevMin;
     const a=document.createElement("a");
     a.download="solomon-temple-flyer.png";
     a.href=canvas.toDataURL("image/png");
     a.click();btn.textContent="⬇ Download PNG";btn.disabled=false;
-  }).catch(()=>{alert("Right-click the flyer and choose Save Image As, or screenshot the preview.");btn.textContent="⬇ Download PNG";btn.disabled=false;});
+  }).catch(()=>{
+    el.style.width=prevW;el.style.minWidth=prevMin;
+    alert("Right-click the flyer and choose Save Image As, or screenshot the preview.");
+    btn.textContent="⬇ Download PNG";btn.disabled=false;
+  });
 }
 
 defaultChurchBgImg=g("fBgChurch")?g("fBgChurch").style.backgroundImage:"";
