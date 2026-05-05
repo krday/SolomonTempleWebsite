@@ -1059,6 +1059,27 @@ function dlFlyer(){
         e.style.backdropFilter="none";e.style.webkitBackdropFilter="none";
       });
       doc.querySelectorAll('img[src$=".svg"]').forEach(function(e){e.removeAttribute("src");});
+      // data: URIs fail inside html2canvas's iframe when the string is large;
+      // converting to Blob URLs (short opaque tokens) avoids this limit.
+      function toBlobUrl(dataUri){
+        const comma=dataUri.indexOf(",");
+        const mime=dataUri.substring(5,comma).split(";")[0];
+        const bin=atob(dataUri.substring(comma+1));
+        const arr=new Uint8Array(bin.length);
+        for(let i=0;i<bin.length;i++)arr[i]=bin.charCodeAt(i);
+        return URL.createObjectURL(new Blob([arr],{type:mime}));
+      }
+      doc.querySelectorAll("img[src^='data:']").forEach(function(e){
+        try{e.src=toBlobUrl(e.getAttribute("src"));}catch(ex){}
+      });
+      doc.querySelectorAll("[style]").forEach(function(el){
+        const bg=el.style.backgroundImage;
+        if(!bg||bg.indexOf("data:")===-1)return;
+        const s=bg.indexOf("data:");
+        const e1=bg.indexOf("'",s),e2=bg.indexOf('"',s),e3=bg.indexOf(")",s);
+        const end=Math.min(e1!==-1?e1:bg.length,e2!==-1?e2:bg.length,e3!==-1?e3:bg.length);
+        try{el.style.backgroundImage=bg.slice(0,s)+toBlobUrl(bg.slice(s,end))+bg.slice(end);}catch(ex){}
+      });
     }
   }).then(canvas=>{
     el.style.width=prevW;el.style.minWidth=prevMin;
