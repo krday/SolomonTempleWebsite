@@ -1057,6 +1057,7 @@ function dlFlyer(){
     onclone(doc){
       doc.querySelectorAll("*").forEach(function(e){
         e.style.backdropFilter="none";e.style.webkitBackdropFilter="none";
+        e.style.maskImage="";e.style.webkitMaskImage="";
       });
       doc.querySelectorAll('img[src$=".svg"]').forEach(function(e){e.removeAttribute("src");});
       // data: URIs fail inside html2canvas's iframe when the string is large;
@@ -1079,6 +1080,16 @@ function dlFlyer(){
         const e1=bg.indexOf("'",s),e2=bg.indexOf('"',s),e3=bg.indexOf(")",s);
         const end=Math.min(e1!==-1?e1:bg.length,e2!==-1?e2:bg.length,e3!==-1?e3:bg.length);
         try{el.style.backgroundImage=bg.slice(0,s)+toBlobUrl(bg.slice(s,end))+bg.slice(end);}catch(ex){}
+      });
+      // radial-gradient(ellipse) causes addColorStop(Infinity) when html2canvas
+      // computes zero dimensions for CSS Grid cells (rx=0 → stop = position/rx = ∞).
+      // Replace with an equivalent linear-gradient that has no radius division.
+      doc.querySelectorAll(".photo-vignette").forEach(function(e){
+        const bg=e.style.background;
+        if(!bg)return;
+        const m=bg.match(/,\s*(rgba?\([^)]+\)|[^,)]+)\s+\d+%\s*\)$/);
+        const col=m?m[1].trim():"#060e24";
+        e.style.background="linear-gradient(to bottom,transparent,"+col+")";
       });
     }
   }).then(canvas=>{
