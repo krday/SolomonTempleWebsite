@@ -381,6 +381,7 @@ body{font-family:'Source Sans 3',sans-serif;background:#06111e;color:#fff;min-he
 
   <button class="btn-g" onclick="resetForm()" style="background:linear-gradient(90deg,#3a3a5a,#555580,#3a3a5a)">↺ Reset / New Flyer</button>
   <button class="btn-d" onclick="dlFlyer()">⬇ Download PNG</button>
+  <button class="btn-d" onclick="openPrintPopup()" style="background:rgba(200,153,26,.08);border:1px solid rgba(200,153,26,.45);margin-top:.3rem">🖨 Save as PDF</button>
 </div>
 
 <!-- ═══ PREVIEW ═══ -->
@@ -1044,11 +1045,6 @@ function resetForm(){
 function dlFlyer(){
   const btn=document.querySelector(".btn-d");
   btn.textContent="⏳ Generating...";btn.disabled=true;
-  // html2canvas requires HTTP — file:// blocks the iframe it creates internally
-  if(location.protocol==="file:"){
-    btn.textContent="⬇ Download PNG";btn.disabled=false;
-    openPrintPopup();return;
-  }
   const el=g("flyer");
   const prevW=el.style.width,prevMin=el.style.minWidth;
   el.style.width="650px";el.style.minWidth="650px";
@@ -1069,8 +1065,8 @@ function dlFlyer(){
   }).catch(function(err){
     console.error("html2canvas:",err);
     el.style.width=prevW;el.style.minWidth=prevMin;
+    alert("PNG export failed. Open DevTools (F12 -> Console) to see the error.");
     btn.textContent="⬇ Download PNG";btn.disabled=false;
-    openPrintPopup();
   });
 }
 
@@ -1081,12 +1077,11 @@ function openPrintPopup(){
   clone.style.cssText+="width:650px;min-width:650px;";
   const popup=window.open("","_blank","width=730,height=960,scrollbars=yes");
   if(!popup){alert("Please allow popups for this page, then click Download PNG again.");return;}
-  const gf="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Source+Sans+3:wght@300;400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap";
-  const bar='<div style="position:fixed;bottom:0;left:0;right:0;background:#0e2260;border-top:3px solid #c8991a;padding:14px 20px;text-align:center;z-index:9999">'+
-    '<p style="color:#e8b830;margin:0 0 10px;font-size:.82rem;font-family:sans-serif">'+
-    'Save as <strong>PDF</strong>: click the button &rarr; set printer to <em>Microsoft Print to PDF</em> &rarr; turn on <em>Background graphics</em> &rarr; Save<br>'+
-    'Save as <strong>PNG</strong>: use Snipping Tool &nbsp;<kbd style="background:#1b3d8f;color:#fff;padding:1px 6px;border-radius:3px;font-size:.78rem">Win+Shift+S</kbd>&nbsp; to screenshot the flyer above</p>'+
-    '<button onclick="window.print()" style="background:linear-gradient(90deg,#9a7412,#c8991a,#9a7412);color:#fff;border:none;padding:10px 32px;border-radius:6px;font-size:.95rem;cursor:pointer;font-weight:700;letter-spacing:.04em">&#128438; Print / Save as PDF</button></div>';
+  const gf="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Cinzel:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Source+Sans+3:wght@300;400;600;700&display=swap";
+  const bar='<div class="xbar" style="position:fixed;bottom:0;left:0;right:0;background:#0e2260;border-top:3px solid #c8991a;padding:12px 20px;text-align:center;z-index:9999">'+
+    '<p style="color:#e8b830;margin:0 0 8px;font-size:.8rem;font-family:sans-serif">'+
+    'Click the button &rarr; set printer to <strong>Microsoft Print to PDF</strong> &rarr; open <em>More settings</em> &rarr; turn on <strong>Background graphics</strong> &rarr; Save</p>'+
+    '<button onclick="window.print()" style="background:linear-gradient(90deg,#9a7412,#c8991a,#9a7412);color:#fff;border:none;padding:10px 32px;border-radius:6px;font-size:.95rem;cursor:pointer;font-weight:700;letter-spacing:.04em">&#128438; Save as PDF</button></div>';
   popup.document.open();
   popup.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"/>'+
     '<link href="'+gf+'" rel="stylesheet"/>'+
