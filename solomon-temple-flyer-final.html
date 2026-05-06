@@ -138,6 +138,7 @@ body{font-family:'Source Sans 3',sans-serif;background:#06111e;color:#fff;min-he
 .f-theme{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:rgba(255,255,255,.88);line-height:1.5;margin:.2rem 0}
 .f-verse{font-size:1rem;letter-spacing:.06em;margin-bottom:.4rem;transition:color .3s}
 .f-datetime{border-radius:10px;padding:.85rem 1.8rem;margin:.7rem 0;display:inline-block;min-width:255px;background:rgba(0,0,0,.3);backdrop-filter:blur(4px);border:1px solid;transition:border-color .3s}
+.f-datetime .day{font-size:1.75rem;font-weight:700;text-align:center;line-height:1.2;transition:color .3s}
 .f-datetime .date{font-family:'Cinzel',serif;font-size:1.55rem;font-weight:700;color:#fff;line-height:1.3;text-shadow:0 2px 8px rgba(0,0,0,.5)}
 .f-datetime .time{font-family:'Cinzel',serif;font-size:1.2rem;font-weight:600;margin-top:.16rem;transition:color .3s;letter-spacing:.04em}
 .f-location{color:rgba(255,255,255,.7);font-size:1rem;line-height:1.65;margin:.2rem 0}
@@ -229,7 +230,8 @@ body{font-family:'Source Sans 3',sans-serif;background:#06111e;color:#fff;min-he
 
   <!-- DATE -->
   <div class="fs"><div class="fst">Date &amp; Location</div>
-    <div class="fg"><label>Date</label><input id="eDate" placeholder="Sunday, October 12, 2025" oninput="upd()"/></div>
+    <div class="fg"><label>Day</label><input id="eDay" placeholder="Sunday" oninput="upd()"/></div>
+    <div class="fg"><label>Date</label><input id="eDate" placeholder="October 12, 2025" oninput="upd()"/></div>
     <div class="fg"><label>Time</label><input id="eTime" placeholder="10:00 a.m." oninput="upd()"/></div>
     <div class="fg"><label>Location</label><input id="eLoc" value="Solomon Temple M.B.C." oninput="upd()"/></div>
     <div class="fg"><label>Address</label><input id="eAddr" value="4859 Rev. A.L. Manson, Sr. Way · St. Louis, MO 63115" oninput="upd()"/></div>
@@ -404,6 +406,7 @@ body{font-family:'Source Sans 3',sans-serif;background:#06111e;color:#fff;min-he
         <div class="f-theme" id="fTheme" style="display:none"></div>
         <div class="f-verse" id="fVerse" style="display:none"></div>
         <div class="f-datetime" id="fDt">
+          <div class="day" id="fDay" style="display:none"></div>
           <div class="date" id="fDate">Date TBD</div>
           <div class="time" id="fTime"></div>
         </div>
@@ -708,7 +711,7 @@ function rebuildLayout(n){
       <div class="f-divthick" id="fDT"></div>
       <div class="f-theme" id="fTheme" style="display:none"></div>
       <div class="f-verse" id="fVerse" style="display:none"></div>
-      <div class="f-datetime" id="fDt"><div class="date" id="fDate">Date TBD</div><div class="time" id="fTime"></div></div>
+      <div class="f-datetime" id="fDt"><div class="day" id="fDay" style="display:none"></div><div class="date" id="fDate">Date TBD</div><div class="time" id="fTime"></div></div>
       <div class="f-location" id="fLoc"><strong>Solomon Temple M.B.C.</strong><br/>4859 Rev. A.L. Manson, Sr. Way · St. Louis, MO 63115</div>
       <div class="f-divline" id="fDL2" style="margin:.65rem 0"></div>
       <div id="fSpk" style="display:flex;align-items:flex-end;justify-content:center;gap:32px;margin-top:auto;width:100%">
@@ -872,10 +875,11 @@ function upd(){
   if(vsEl){const vs=v("eVerse");vsEl.textContent=vs;vsEl.style.color=A.lt;vsEl.style.display=vs?"block":"none"}
 
   // Date/time
-  const fd=g("fDate"),ft=g("fTime"),fdt=g("fDt");
+  const fd=g("fDate"),ft=g("fTime"),fdt=g("fDt"),fdy=g("fDay");
   if(fd)fd.textContent=v("eDate")||"Date TBD";
   if(ft){ft.textContent=v("eTime");ft.style.color=A.lt;if(ft.style.fontFamily!==undefined)ft.style.color=A.lt;}
   if(fdt)fdt.style.borderColor=`rgba(${A.rgb},.32)`;
+  if(fdy){const dv=v("eDay");fdy.textContent=dv;fdy.style.display=dv?"block":"none";fdy.style.color=A.lt;fdy.className="day title-"+cFont;}
   // Celeb layout time color
   const ctTag=g("fChurchTag");if(ctTag)ctTag.style.color=A.m;
 
@@ -919,7 +923,7 @@ function upd(){
 
 function resetForm(){
   if(!confirm("Clear all fields and start a new flyer?")) return;
-  ["eTitle","eSub","eTheme","eVerse","eDate","eTime","gName","gChurch","gCity"].forEach(id=>{
+  ["eTitle","eSub","eTheme","eVerse","eDay","eDate","eTime","gName","gChurch","gCity"].forEach(id=>{
     const el=g(id); if(el) el.value="";
   });
   g("eLoc").value="Solomon Temple M.B.C.";
