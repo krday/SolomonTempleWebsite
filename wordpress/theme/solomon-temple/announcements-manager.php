@@ -153,8 +153,7 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--whi
 </div>
 
 <script>
-const ANN_API   = '<?php echo esc_js(rest_url("st/v1/announcements")); ?>';
-const ANN_NONCE = '<?php echo esc_js(wp_create_nonce("st_announcements")); ?>';
+const ANN_API = '<?php echo esc_js(rest_url("st/v1/announcements")); ?>';
 let data = [];
 
 async function loadAnn(){
@@ -169,7 +168,8 @@ async function loadAnn(){
 async function saveAnn(){
   const r = await fetch(ANN_API, {
     method: 'POST',
-    headers: {'Content-Type':'application/json','X-WP-Nonce': ANN_NONCE},
+    credentials: 'same-origin',
+    headers: {'Content-Type':'application/json'},
     body: JSON.stringify(data)
   });
   if(!r.ok){ alert('Save failed. Please try again.'); }

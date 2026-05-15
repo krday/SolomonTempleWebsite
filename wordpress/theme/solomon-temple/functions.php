@@ -64,7 +64,9 @@ add_action( 'rest_api_init', function () {
                 return rest_ensure_response( $clean );
             },
             'permission_callback' => function ( WP_REST_Request $req ) {
-                return (bool) wp_verify_nonce( $req->get_header( 'X-WP-Nonce' ), 'st_announcements' );
+                if ( ! session_id() ) session_start();
+                return ! empty( $_SESSION['st_admin_auth'] )
+                    && ( time() - ( isset( $_SESSION['st_admin_auth_ts'] ) ? $_SESSION['st_admin_auth_ts'] : 0 ) ) < 28800;
             },
         ],
     ] );
