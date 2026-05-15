@@ -31,9 +31,7 @@
 <!-- ═══ NAV ═══ -->
 <nav id="top">
   <div class="nav-inner">
-    <a href="#home" class="brand">
-      <!-- WORDPRESS MIGRATION: Replace src with wp_get_attachment_url() or theme asset path: /wp-content/themes/solomon-temple/images/ Leave the base64 data intact for now so local preview still works. -->
-      <img src="<?php echo get_template_directory_uri(); ?>/images/stmbc-logo.png" alt="Solomon Temple Logo" style="width:50px;height:54px;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))"/>
+    <a href="#home" class="brand">      <img src="<?php echo get_template_directory_uri(); ?>/images/stmbc-logo.png" alt="Solomon Temple Logo" style="width:50px;height:54px;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4))"/>
       <div class="brand-text">
         <div class="cn">Solomon Temple M.B.C.</div>
         <div class="cs">4859 Rev. A.L. Manson, Sr. Way · St. Louis, MO 63115</div>
@@ -204,9 +202,7 @@
     <div class="divider"></div>
     <div class="pastor-grid">
       <div class="pastor-photo-col">
-        <div class="pastor-oval">
-      <!-- WORDPRESS MIGRATION: Replace src with wp_get_attachment_url() or theme asset path: /wp-content/themes/solomon-temple/images/ Leave the base64 data intact for now so local preview still works. -->
-          <img src="<?php echo get_template_directory_uri(); ?>/images/pastor-manson.png" alt="Rev. Dr. Albert L. Manson, Jr." style="width:100%;height:100%;object-fit:cover;object-position:center 15%"/>
+        <div class="pastor-oval">          <img src="<?php echo get_template_directory_uri(); ?>/images/pastor-manson.png" alt="Rev. Dr. Albert L. Manson, Jr." style="width:100%;height:100%;object-fit:cover;object-position:center 15%"/>
         </div>
         <div class="pastor-plate">
           Rev. Dr. Albert L. Manson, Jr.<br/>
@@ -229,9 +225,7 @@
 <section class="building" id="church">
   <div class="container">
     <div class="building-grid">
-      <div class="building-img">
-      <!-- WORDPRESS MIGRATION: Replace src with wp_get_attachment_url() or theme asset path: /wp-content/themes/solomon-temple/images/ Leave the base64 data intact for now so local preview still works. -->
-        <img src="<?php echo get_template_directory_uri(); ?>/images/church-exterior.png" alt="Solomon Temple Missionary Baptist Church" style="width:100%;display:block;object-fit:cover"/>
+      <div class="building-img">        <img src="<?php echo get_template_directory_uri(); ?>/images/church-exterior.png" alt="Solomon Temple Missionary Baptist Church" style="width:100%;display:block;object-fit:cover"/>
       </div>
       <div class="building-text">
         <span class="sec-label">Our Home</span>
@@ -365,23 +359,17 @@
     <div class="past-pastors">
       <h3>In Loving Memory - Our Past Shepherds</h3>
       <div class="pastors-row">
-        <div class="p-card">
-      <!-- WORDPRESS MIGRATION: Replace src with wp_get_attachment_url() or theme asset path: /wp-content/themes/solomon-temple/images/ Leave the base64 data intact for now so local preview still works. -->
-          <div class="pico"><img src="<?php echo get_template_directory_uri(); ?>/images/rev-greenwood.png" alt="Rev. J.G. Greenwood"/></div>
+        <div class="p-card">          <div class="pico"><img src="<?php echo get_template_directory_uri(); ?>/images/rev-greenwood.png" alt="Rev. J.G. Greenwood"/></div>
           <h4>Rev. J.G. Greenwood</h4>
           <div class="yrs">1936 – 1964</div>
           <p>Purchased our first church home &amp; moved the congregation forward in faith</p>
         </div>
-        <div class="p-card">
-      <!-- WORDPRESS MIGRATION: Replace src with wp_get_attachment_url() or theme asset path: /wp-content/themes/solomon-temple/images/ Leave the base64 data intact for now so local preview still works. -->
-          <div class="pico"><img src="<?php echo get_template_directory_uri(); ?>/images/rev-jones.png" alt="Rev. William Thomas Jones"/></div>
+        <div class="p-card">          <div class="pico"><img src="<?php echo get_template_directory_uri(); ?>/images/rev-jones.png" alt="Rev. William Thomas Jones"/></div>
           <h4>Rev. William Thomas Jones</h4>
           <div class="yrs">1964 – 1977</div>
           <p>Kept his promise - the church would not die under his watch</p>
         </div>
-        <div class="p-card">
-      <!-- WORDPRESS MIGRATION: Replace src with wp_get_attachment_url() or theme asset path: /wp-content/themes/solomon-temple/images/ Leave the base64 data intact for now so local preview still works. -->
-          <div class="pico"><img src="<?php echo get_template_directory_uri(); ?>/images/rev-al-manson-sr.png" alt="Rev. Albert L. Manson, Sr."/></div>
+        <div class="p-card">          <div class="pico"><img src="<?php echo get_template_directory_uri(); ?>/images/rev-al-manson-sr.png" alt="Rev. Albert L. Manson, Sr."/></div>
           <h4>Rev. Albert L. Manson, Sr.</h4>
           <div class="yrs">1978 - 2020</div>
           <p>42 years of faithful service - builder of our current home, mentor to many, called to Glory December 24, 2020</p>

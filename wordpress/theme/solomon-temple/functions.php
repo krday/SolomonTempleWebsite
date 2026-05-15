@@ -15,3 +15,19 @@ function solomon_temple_scripts() {
     wp_enqueue_style( 'solomon-temple-style', get_stylesheet_uri() );
 }
 add_action( 'wp_enqueue_scripts', 'solomon_temple_scripts' );
+
+// ── Custom page routing (no WP admin pages needed) ──────────────────────
+add_action( 'template_redirect', function () {
+    $path = trim( parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ), '/' );
+
+    $routes = [
+        'mothers-ministry'      => 'mothers-ministry.php',
+        'announcements-manager' => 'announcements-manager.php',
+        'flyer-generator'       => 'flyer-generator.php',
+    ];
+
+    if ( array_key_exists( $path, $routes ) ) {
+        include get_template_directory() . '/' . $routes[ $path ];
+        exit;
+    }
+} );
