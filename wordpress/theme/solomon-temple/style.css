@@ -1,0 +1,460 @@
+/*
+Theme Name: Solomon Temple MBC
+Theme URI: https://ztc.cfl.mybluehost.me
+Author: Solomon Temple MBC
+Description: Official website for Solomon Temple Missionary Baptist Church, St. Louis, MO
+Version: 1.0
+Text Domain: solomon-temple
+*/
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --royal:   #1b3d8f;
+  --royal-dk:#0e2260;
+  --royal-lt:#2a52b0;
+  --gold:    #c8991a;
+  --gold-lt: #e8b830;
+  --gold-dim:#9a7412;
+  --cream:   #fdf9f0;
+  --white:   #ffffff;
+  --text:    #1a1a2e;
+  --gray:    #5a6a82;
+  --light:   #edf0f8;
+  --radius:  10px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+
+/* ─── TOPBAR ─── */
+.topbar{
+  background:var(--royal-dk);
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.45rem 1.5rem;gap:.5rem;flex-wrap:nowrap;
+}
+.topbar-left{
+  display:flex;align-items:center;gap:.6rem;
+  color:rgba(255,255,255,.8);font-size:.72rem;white-space:nowrap;flex-shrink:1;min-width:0;
+}
+.topbar-left a{color:var(--gold-lt);text-decoration:none;white-space:nowrap}
+.topbar-left .sep{color:rgba(255,255,255,.3)}
+.topbar-right{display:flex;gap:.9rem;flex-shrink:0}
+.topbar-right a{
+  color:var(--gold-lt);text-decoration:none;font-size:.72rem;
+  font-weight:600;white-space:nowrap;display:flex;align-items:center;gap:.3rem;
+}
+.topbar-right a:hover{color:var(--white)}
+/* On very small screens collapse address */
+@media(max-width:640px){
+  .topbar-addr{display:none}
+  .topbar-left .sep{display:none}
+  .topbar .soc{display:none}
+}
+
+/* ─── NAV ─── */
+nav{
+  background:var(--royal);
+  position:sticky;top:0;z-index:200;
+  box-shadow:0 4px 20px rgba(0,0,0,.4);
+  border-bottom:3px solid var(--gold-dim);
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.85rem 1.5rem;max-width:1200px;margin:0 auto;
+}
+.brand{display:flex;align-items:center;gap:.85rem;text-decoration:none}
+.brand svg{width:44px;height:50px;flex-shrink:0;filter:drop-shadow(0 2px 6px rgba(0,0,0,.4))}
+.brand-text .cn{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:var(--white);line-height:1.2}
+.brand-text .cs{font-size:.65rem;color:rgba(232,184,48,.85);letter-spacing:.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:260px}
+
+/* Desktop links */
+.nav-links{display:flex;align-items:center;gap:.1rem;flex-wrap:nowrap}
+.nav-links a{padding:.42rem .72rem;border-radius:6px;text-decoration:none;font-size:.84rem;font-weight:600;color:rgba(255,255,255,.85);transition:background .18s,color .18s;white-space:nowrap}
+.nav-links a:hover{background:rgba(255,255,255,.1);color:var(--gold-lt)}
+.nav-links .give{background:var(--gold);color:var(--royal-dk);padding:.42rem 1rem;margin-left:.4rem;border-radius:6px;font-weight:700;transition:background .18s}
+.nav-links .give:hover{background:var(--gold-lt)}
+
+/* Hamburger - right side, mobile only */
+.hamburger{
+  display:none;cursor:pointer;
+  flex-direction:column;justify-content:center;gap:5px;
+  width:38px;height:38px;padding:4px;
+  background:rgba(255,255,255,.08);border-radius:6px;flex-shrink:0;
+}
+.hamburger span{width:22px;height:2.5px;background:rgba(255,255,255,.85);border-radius:2px;display:block;transition:all .25s}
+
+/* Mobile drawer */
+.mobile-menu{
+  display:none;flex-direction:column;
+  background:var(--royal-dk);border-top:2px solid var(--gold-dim);
+  padding:.5rem 0;
+}
+.mobile-menu.open{display:flex}
+.mobile-menu a{
+  padding:.8rem 1.5rem;text-decoration:none;font-size:.95rem;
+  font-weight:600;color:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.05);
+  transition:background .15s,color .15s;
+}
+.mobile-menu a:hover{background:rgba(255,255,255,.07);color:var(--gold-lt)}
+.mobile-menu .give-m{
+  margin:1rem 1.5rem .5rem;background:var(--gold);color:var(--royal-dk);
+  border-radius:8px;text-align:center;padding:.75rem;font-weight:700;
+  border-bottom:none;font-size:1rem;
+}
+.mobile-menu .give-m:hover{background:var(--gold-lt);color:var(--royal-dk)}
+
+@media(max-width:820px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+}
+
+/* ─── HERO ─── */
+.hero{
+  background:var(--royal-dk);
+  min-height:88vh;display:flex;align-items:center;
+  position:relative;overflow:hidden;padding:5rem 1.5rem;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 70% at 85% 50%, rgba(200,153,26,.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 5% 90%, rgba(42,82,176,.3) 0%, transparent 55%);
+}
+/* Grid pattern texture */
+.hero-grid{
+  position:absolute;inset:0;opacity:.04;
+  background-image:
+    repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,1) 40px,rgba(255,255,255,1) 41px),
+    repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,1) 40px,rgba(255,255,255,1) 41px);
+}
+.stripe-top{position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--gold-dim),var(--gold-lt) 50%,var(--gold-dim))}
+.stripe-bot{position:absolute;bottom:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--gold-dim),var(--gold-lt) 50%,var(--gold-dim))}
+.hero-content{position:relative;z-index:2;max-width:660px;margin:0 auto;}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(200,153,26,.15);border:1px solid rgba(200,153,26,.4);
+  color:var(--gold-lt);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;
+  padding:.3rem .9rem;border-radius:50px;margin-bottom:1.4rem;
+}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.4rem,6vw,4.4rem);font-weight:700;
+  color:var(--white);line-height:1.05;margin-bottom:.5rem;
+}
+.hero h1 .accent{color:var(--gold-lt)}
+.hero .est{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  color:var(--gold);font-size:1.05rem;margin-bottom:1.1rem;
+}
+.hero-motto{
+  font-family:'Cormorant Garamond',serif;font-size:1.45rem;
+  font-style:italic;font-weight:600;color:var(--gold-lt);
+  border-top:1px solid rgba(200,153,26,.35);
+  border-bottom:1px solid rgba(200,153,26,.35);
+  padding:.55rem 0;margin-bottom:1.1rem;
+}
+.hero p{color:rgba(214,221,232,.8);font-size:.98rem;line-height:1.75;margin-bottom:2rem;max-width:520px}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+
+/* Badge */
+.hero-badge{
+  position:absolute;right:5rem;top:50%;transform:translateY(-50%);
+  width:200px;height:200px;border-radius:50%;
+  border:3px solid rgba(200,153,26,.45);
+  background:rgba(14,34,96,.65);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;gap:.2rem;backdrop-filter:blur(6px);
+  box-shadow:0 0 0 1px rgba(200,153,26,.15),0 8px 32px rgba(0,0,0,.4);
+}
+.hero-badge .lbl{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.hero-badge .day{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--white);font-weight:600}
+.hero-badge .time{font-family:'Cormorant Garamond',serif;font-size:2.8rem;color:var(--gold-lt);font-weight:700;line-height:1}
+.hero-badge .am{font-size:.75rem;color:var(--gold);letter-spacing:.05em}
+@media(max-width:820px){.hero-badge{display:none}}
+
+/* Buttons */
+.btn-gold{background:var(--gold);color:var(--royal-dk);padding:.85rem 2rem;border-radius:8px;font-weight:700;font-size:.93rem;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:background .2s,transform .15s;border:none;cursor:pointer;font-family:inherit}
+.btn-gold:hover{background:var(--gold-lt);transform:translateY(-2px)}
+.btn-ghost{border:2px solid rgba(200,153,26,.4);color:var(--gold-lt);padding:.85rem 2rem;border-radius:8px;font-weight:700;font-size:.93rem;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s}
+.btn-ghost:hover{border-color:var(--gold-lt);background:rgba(200,153,26,.1);color:var(--white)}
+
+/* ─── STRIP ─── */
+.strip{background:linear-gradient(90deg,var(--gold-dim),var(--gold) 50%,var(--gold-dim));display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap}
+.strip .item{display:flex;align-items:center;justify-content:center;gap:.5rem;color:var(--royal-dk);font-weight:700;font-size:.86rem;padding:.85rem 1.4rem;text-align:center;border-right:1px solid rgba(14,34,96,.15)}
+.strip .item:last-child{border-right:none}
+.strip .item a{color:var(--royal-dk);text-decoration:none}
+.strip .item .ic{font-size:1.05rem;flex-shrink:0}
+@media(max-width:640px){
+  .strip .item{border-right:none;border-bottom:1px solid rgba(14,34,96,.1);width:100%;justify-content:center}
+  .strip .item:last-child{border-bottom:none}
+}
+
+/* ─── MOTTO BANNER ─── */
+.motto-banner{background:var(--white);border-top:4px solid var(--gold);border-bottom:4px solid var(--gold);padding:2.5rem 1.5rem;text-align:center}
+.motto-banner .tag{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-dim);font-weight:700;margin-bottom:.5rem}
+.motto-banner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.7rem,4vw,2.7rem);color:var(--royal-dk);font-style:italic;font-weight:600;line-height:1.2}
+.motto-banner .ref{color:var(--gray);font-size:.88rem;margin-top:.5rem;font-style:italic}
+.motto-banner .chips{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-top:1.2rem}
+.motto-banner .chip{background:var(--royal-dk);color:var(--white);font-family:'Cormorant Garamond',serif;font-style:italic;padding:.55rem 1.3rem;border-radius:50px;font-size:.95rem;border:2px solid var(--gold)}
+
+/* ─── SHARED SECTION ─── */
+section{padding:5rem 1.5rem}
+.container{max-width:1100px;margin:0 auto}
+.sec-label{display:inline-block;color:var(--gold-dim);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin-bottom:.5rem}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.7rem);color:var(--royal-dk);line-height:1.15;margin-bottom:.8rem}
+.sec-sub{color:var(--gray);max-width:580px;line-height:1.75;font-size:.96rem}
+.divider{width:52px;height:4px;background:linear-gradient(90deg,var(--gold),var(--gold-lt));border-radius:2px;margin:.65rem 0 1.1rem}
+.sec-title-wht{color:var(--white)}
+.sec-sub-wht{color:rgba(214,221,232,.7)}
+
+/* ─── QUICK LINKS ─── */
+.ql{background:var(--cream)}
+.ql-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.3rem;margin-top:2.5rem}
+.ql-card{border:2px solid rgba(200,153,26,.22);border-radius:var(--radius);padding:1.8rem 1.4rem;text-align:center;text-decoration:none;transition:all .22s;background:var(--white)}
+.ql-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 10px 28px rgba(200,153,26,.14)}
+.ql-card .qico{font-size:2rem;margin-bottom:.75rem}
+.ql-card h3{font-family:'Cormorant Garamond',serif;font-size:1.18rem;color:var(--royal-dk);margin-bottom:.4rem}
+.ql-card p{color:var(--gray);font-size:.85rem;line-height:1.6}
+
+/* ─── PASTOR ─── */
+.pastor{background:var(--royal-dk)}
+.pastor .sec-label{color:var(--gold)}
+.pastor .sec-title{color:var(--white)}
+.pastor-grid{display:grid;grid-template-columns:5fr 7fr;gap:4rem;align-items:center;margin-top:2rem}
+.pastor-photo-col{display:flex;flex-direction:column;align-items:center;gap:1.2rem}
+/* Oval gold frame - placeholder version */
+.pastor-oval{
+  width:260px;height:300px;border-radius:50%;overflow:hidden;
+  border:8px solid var(--gold);
+  box-shadow:0 0 0 4px var(--gold-dim),0 12px 40px rgba(0,0,0,.5);
+  display:block;margin:0 auto;
+  background:#0e2260;
+}
+.pastor-oval img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 20%;
+  display:block;
+  margin:0;
+}
+.pastor-plate{background:linear-gradient(90deg,var(--gold-dim),var(--gold),var(--gold-dim));color:var(--royal-dk);font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:700;padding:.65rem 1.8rem;border-radius:6px;text-align:center;line-height:1.45;box-shadow:0 4px 16px rgba(200,153,26,.4)}
+.pastor-text .verse-pull{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold-lt);font-size:1.08rem;line-height:1.65;border-left:4px solid var(--gold);padding-left:1.1rem;margin-bottom:1.4rem}
+.pastor-text .legacy{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold);letter-spacing:.05em;text-transform:uppercase;margin-bottom:.8rem}
+.pastor-text p{color:rgba(214,221,232,.85);line-height:1.85;font-size:.96rem;margin-bottom:1rem}
+
+/* ─── BUILDING ─── */
+.building{background:var(--white)}
+.building-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;margin-top:2rem}
+.building-ph{
+  border-radius:var(--radius);border:4px solid var(--gold);
+  aspect-ratio:4/3;background:linear-gradient(160deg,var(--royal-dk),var(--royal-lt));
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:.8rem;color:rgba(200,153,26,.4);text-align:center;padding:2rem;
+  box-shadow:0 10px 40px rgba(0,0,0,.12);
+}
+.building-ph .ph-icon{font-size:3.5rem}
+.building-ph .ph-text{font-size:.8rem;color:rgba(214,221,232,.45);line-height:1.5}
+.building-text p{color:#3a3a5a;line-height:1.85;font-size:.96rem;margin-bottom:1rem}
+.info-row{display:flex;align-items:flex-start;gap:.7rem;margin-bottom:.75rem}
+.info-row .ic{font-size:1.1rem;margin-top:.1rem;flex-shrink:0}
+.info-row span{color:#3a3a5a;font-size:.92rem;line-height:1.6}
+.info-row strong{color:var(--royal-dk)}
+.info-row a{color:var(--royal);text-decoration:none}
+.info-row a:hover{color:var(--gold-dim)}
+.building-motto{background:var(--royal-dk);color:var(--gold-lt);font-family:'Cormorant Garamond',serif;font-style:italic;padding:.8rem 1.2rem;border-radius:8px;font-size:1.05rem;border-left:4px solid var(--gold);margin-top:1.2rem;line-height:1.5}
+
+/* ─── MINISTRIES ─── */
+.ministries{background:var(--royal)}
+.min-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:1.2rem;margin-top:2.5rem}
+.min-card{background:rgba(255,255,255,.06);border:1px solid rgba(200,153,26,.2);border-radius:var(--radius);padding:1.7rem 1rem;text-align:center;transition:background .2s,border-color .2s,transform .2s}
+.min-card:hover{background:rgba(200,153,26,.14);border-color:rgba(200,153,26,.5);transform:translateY(-3px)}
+.min-card .ico{font-size:1.9rem;margin-bottom:.6rem}
+.min-card h4{color:var(--white);font-size:.9rem;font-weight:600}
+
+/* ─── HISTORY ─── */
+.history{background:var(--cream)}
+.history-lead{color:#3a3a5a;line-height:1.85;font-size:.96rem;max-width:820px;margin-bottom:2.5rem}
+.timeline{position:relative;padding-left:2.8rem;max-width:860px}
+.timeline::before{content:'';position:absolute;left:.85rem;top:.5rem;bottom:.5rem;width:2px;background:linear-gradient(180deg,var(--gold),var(--royal))}
+.tl-item{position:relative;margin-bottom:2.2rem}
+.tl-dot{position:absolute;left:-2.8rem;top:.25rem;width:26px;height:26px;border-radius:50%;background:var(--gold);border:3px solid var(--royal-dk);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;color:var(--royal-dk)}
+.tl-year{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-dim);font-weight:700;margin-bottom:.2rem}
+.tl-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--royal-dk);margin-bottom:.3rem;font-weight:600}
+.tl-text{color:var(--gray);font-size:.9rem;line-height:1.72}
+.past-pastors{margin-top:3.5rem}
+.past-pastors h3{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--royal-dk);margin-bottom:1.5rem;font-style:italic}
+.pastors-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.p-card{background:var(--royal-dk);border-radius:var(--radius);border:2px solid rgba(200,153,26,.3);text-align:center;padding:2rem 1.2rem}
+.p-card .pico{width:130px;height:130px;border-radius:50%;background:linear-gradient(135deg,var(--royal-lt),var(--royal-dk));border:5px solid var(--gold);margin:0 auto .9rem;display:flex;align-items:center;justify-content:center;font-size:1.8rem;overflow:hidden;box-shadow:0 0 0 2px var(--gold-dim)}
+.p-card .pico img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
+.p-card h4{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--white);margin-bottom:.25rem}
+.p-card .yrs{color:var(--gold);font-size:.82rem;font-weight:700}
+.p-card p{color:rgba(214,221,232,.5);font-size:.8rem;margin-top:.3rem;font-style:italic}
+
+/* ─── GALLERY ─── */
+.gallery{background:var(--white)}
+.gal-filter{display:flex;gap:.6rem;flex-wrap:wrap;margin:1.5rem 0 2rem}
+.gal-filter button{padding:.4rem 1rem;border-radius:50px;border:2px solid rgba(27,61,143,.22);background:transparent;color:var(--royal);font-family:inherit;font-size:.83rem;font-weight:600;cursor:pointer;transition:all .18s}
+.gal-filter button.active,.gal-filter button:hover{background:var(--royal-dk);color:var(--gold-lt);border-color:var(--royal-dk)}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:185px;gap:10px}
+.g-item{border-radius:8px;overflow:hidden;cursor:pointer;position:relative;transition:transform .22s,box-shadow .22s}
+.g-item:hover{transform:scale(1.025);box-shadow:0 14px 36px rgba(0,0,0,.28);z-index:2}
+.g-item.wide{grid-column:span 2}
+.g-item.tall{grid-row:span 2}
+.g-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.4rem;font-size:2.6rem}
+.g-overlay{position:absolute;inset:0;background:rgba(14,34,96,.8);display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .22s;text-align:center;padding:1rem}
+.g-item:hover .g-overlay{opacity:1}
+.g-overlay .zoom{font-size:1.4rem;color:var(--gold-lt);margin-bottom:.4rem}
+.g-overlay p{font-size:.82rem;color:rgba(232,184,48,.9);line-height:1.4}
+.gc1{background:linear-gradient(135deg,#0e2260,#1b3d8f)}
+.gc2{background:linear-gradient(135deg,#0e2260,#2a52b0)}
+.gc3{background:linear-gradient(135deg,#1b3d8f,#0e2260)}
+.gc4{background:linear-gradient(135deg,#2a52b0,#0e2260)}
+.gc5{background:linear-gradient(135deg,#0a1c5a,#1b3d8f)}
+.gc6{background:linear-gradient(135deg,#1b3d8f,#2a52b0)}
+.gc7{background:linear-gradient(135deg,#0e2260,#1b3d8f)}
+.gc8{background:linear-gradient(135deg,#2a52b0,#1b3d8f)}
+.g-ph-label{font-size:.78rem;color:rgba(232,184,48,.6);text-align:center;line-height:1.4}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:999;display:none;align-items:center;justify-content:center;flex-direction:column;gap:1rem;padding:2rem}
+.lightbox.open{display:flex}
+.lb-img{max-width:660px;width:100%;aspect-ratio:16/9;background:var(--royal-dk);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-size:4rem;border:3px solid var(--gold)}
+.lb-cap{color:var(--gold-lt);font-size:.95rem;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic}
+.lb-close{position:fixed;top:1.5rem;right:1.5rem;background:var(--gold);color:var(--royal-dk);border:none;width:40px;height:40px;border-radius:50%;font-size:1.1rem;cursor:pointer;font-weight:700;display:flex;align-items:center;justify-content:center}
+.lb-nav{display:flex;gap:1rem;margin-top:.4rem}
+.lb-nav button{background:rgba(200,153,26,.12);border:1px solid rgba(200,153,26,.4);color:var(--gold-lt);padding:.5rem 1.2rem;border-radius:6px;cursor:pointer;font-family:inherit;font-size:.88rem;transition:background .18s}
+.lb-nav button:hover{background:var(--gold);color:var(--royal-dk);border-color:var(--gold)}
+
+/* ─── GIVING ─── */
+.giving{background:var(--royal-dk)}
+.giving .sec-label{color:var(--gold)}
+.giving .sec-title{color:var(--white)}
+.giving-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:2rem}
+.giving-text .verse-pull{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold-lt);font-size:1.08rem;line-height:1.65;border-left:4px solid var(--gold);padding-left:1.1rem;margin-bottom:1.4rem}
+.giving-text p{color:rgba(214,221,232,.85);line-height:1.85;margin-bottom:1rem;font-size:.96rem}
+.give-cards{display:flex;flex-direction:column;gap:1rem}
+.give-card{
+  border:2px solid rgba(200,153,26,.3);border-radius:var(--radius);
+  padding:1.3rem 1.4rem;
+  display:flex;align-items:center;gap:1rem;
+  text-decoration:none;
+  background:rgba(255,255,255,.06);
+  transition:all .2s;
+}
+.give-card:hover{border-color:var(--gold);background:rgba(200,153,26,.1);transform:translateX(3px)}
+.give-card .gico{
+  font-size:2rem;flex-shrink:0;
+  width:48px;height:48px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(200,153,26,.15);border-radius:8px;
+}
+.give-card-text{display:flex;flex-direction:column;gap:.15rem}
+.give-card-text h4{color:var(--white);font-size:.97rem;font-weight:700;line-height:1.3}
+.give-card-text p{color:rgba(214,221,232,.7);font-size:.82rem;line-height:1.45}
+
+/* ─── PRAYER ─── */
+.prayer{background:var(--cream)}
+.prayer-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start;margin-top:2.5rem}
+.prayer-form{background:var(--white);border:2px solid rgba(200,153,26,.28);border-radius:var(--radius);padding:2rem;box-shadow:0 4px 24px rgba(0,0,0,.07)}
+.form-group{margin-bottom:1.1rem}
+.form-group label{display:block;color:var(--royal-dk);font-size:.75rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:.38rem}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:var(--cream);border:2px solid var(--light);border-radius:6px;color:var(--text);padding:.7rem .95rem;font-family:'Source Sans 3',sans-serif;font-size:.94rem;outline:none;transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--gold)}
+.form-group textarea{min-height:120px;resize:vertical}
+/* WPForms styling to match site design */
+.prayer-form .wpforms-field{margin-bottom:1.1rem}
+.prayer-form .wpforms-field label{display:block;color:var(--royal-dk);font-size:.75rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:.38rem}
+.prayer-form .wpforms-field input,.prayer-form .wpforms-field textarea,.prayer-form .wpforms-field select{width:100%;background:var(--cream);border:2px solid var(--light);border-radius:6px;color:var(--text);padding:.7rem .95rem;font-family:'Source Sans 3',sans-serif;font-size:.94rem;outline:none;transition:border-color .2s;box-sizing:border-box}
+.prayer-form .wpforms-field input:focus,.prayer-form .wpforms-field textarea:focus{border-color:var(--gold)}
+.prayer-form .wpforms-field textarea{min-height:120px;resize:vertical}
+.prayer-form .wpforms-submit-container{margin-top:1.1rem}
+.prayer-form .wpforms-submit{width:100%;justify-content:center;font-size:1rem;border:none;background:var(--gold);color:var(--royal-dk);padding:.85rem 2rem;border-radius:8px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s,transform .15s}
+.prayer-form .wpforms-submit:hover{background:var(--gold-lt);transform:translateY(-2px)}
+.prayer-form .wpforms-field-sublabel{display:none}
+.prayer-form .wpforms-error{color:#c0392b;font-size:.78rem;margin-top:.25rem}
+.verse-block{background:var(--royal-dk);border-left:4px solid var(--gold);padding:1.3rem 1.4rem;border-radius:0 var(--radius) var(--radius) 0;margin-bottom:1.3rem}
+.verse-block p{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold-lt);line-height:1.7;font-size:1.02rem}
+.verse-block cite{color:var(--gray);font-size:.78rem;display:block;margin-top:.45rem;font-style:normal}
+.prayer-info p{color:var(--gray);font-size:.92rem;line-height:1.75;margin-bottom:.8rem}
+
+/* ─── MEDIA ─── */
+.media{background:var(--royal)}
+.media .sec-label{color:var(--gold)}
+.media .sec-title{color:var(--white)}
+.media .sec-sub{color:rgba(214,221,232,.7)}
+.media-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:2.5rem}
+.media-box{background:var(--royal-dk);border-radius:var(--radius);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.85rem;text-align:center;padding:2rem;border:2px solid rgba(200,153,26,.18);transition:border-color .2s}
+.media-box:hover{border-color:var(--gold)}
+.media-box .play{font-size:2.8rem}
+.media-box h4{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--white)}
+.media-box p{color:rgba(214,221,232,.65);font-size:.83rem;max-width:260px;line-height:1.6}
+.media-box a.wbtn{padding:.6rem 1.4rem;border-radius:6px;text-decoration:none;font-weight:700;font-size:.83rem;display:inline-flex;align-items:center;gap:.4rem;transition:opacity .2s}
+.media-box a.wbtn:hover{opacity:.85}
+.yt-btn{background:#FF0000;color:#fff}
+.fb-btn{background:#1877F2;color:#fff}
+.media-links{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.4rem}
+.mlink{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:700;font-size:.86rem;transition:opacity .2s}
+.mlink:hover{opacity:.85}
+.mlink.yt{background:#FF0000;color:#fff}
+.mlink.fb{background:#1877F2;color:#fff}
+
+/* ─── CONTACT ─── */
+.contact{background:var(--cream)}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;margin-top:2.5rem}
+.c-card{background:var(--white);border:2px solid rgba(200,153,26,.22);border-radius:var(--radius);padding:1.8rem;text-align:center;transition:all .2s}
+.c-card:hover{border-color:var(--gold);box-shadow:0 6px 24px rgba(200,153,26,.12);transform:translateY(-3px)}
+.c-card .ico{font-size:1.9rem;margin-bottom:.65rem}
+.c-card h4{font-family:'Cormorant Garamond',serif;color:var(--royal-dk);font-size:1.08rem;margin-bottom:.55rem}
+.c-card p,.c-card a{color:var(--gray);font-size:.9rem;line-height:1.65;text-decoration:none}
+.c-card a:hover{color:var(--gold-dim)}
+.c-card strong{color:var(--royal-dk)}
+.map-ph{background:var(--royal-dk);border-radius:var(--radius);height:190px;margin-top:2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;color:rgba(200,153,26,.45);font-size:.88rem;gap:.5rem;border:2px solid rgba(200,153,26,.18)}
+.addr-link{color:inherit;text-decoration:none}.addr-link:hover{text-decoration:underline}
+.map-ph .big{font-size:2.2rem}
+
+/* ─── FOOTER ─── */
+footer{background:#060f1a;color:#5a6070;padding:3.5rem 1.5rem 1.5rem}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-motto-bar{text-align:center;padding:1rem;margin-bottom:1.8rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:var(--gold-lt);border-top:1px solid rgba(200,153,26,.2);border-bottom:1px solid rgba(200,153,26,.2)}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.07)}
+.fb-col .name{font-family:'Cormorant Garamond',serif;color:#fff;font-size:1.1rem;margin-bottom:.25rem}
+.fb-col .motto-ft{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold);font-size:.9rem;margin-bottom:.8rem}
+.fb-col p{font-size:.84rem;line-height:1.7;margin-bottom:1rem}
+.soc-icons{display:flex;gap:.6rem}
+.soc-icons a{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:.9rem;color:#8899b5;transition:background .2s}
+.soc-icons a:hover{background:var(--gold);color:var(--royal-dk)}
+.fc h5{color:#fff;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.9rem}
+.fc ul{list-style:none}
+.fc ul li{margin-bottom:.48rem}
+.fc ul li a{color:#5a6070;text-decoration:none;font-size:.86rem;transition:color .18s}
+.fc ul li a:hover{color:var(--gold-lt)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;font-size:.76rem;flex-wrap:wrap;gap:.5rem}
+.footer-bottom a{color:var(--gold);text-decoration:none}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:820px){
+  .pastor-grid,.building-grid,.giving-grid,.prayer-grid,.media-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .gal-grid{grid-template-columns:repeat(2,1fr)}
+  .g-item.wide{grid-column:span 1}
+  .pastors-row{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  section{padding:3.5rem 1.1rem}
+  .contact-grid,.footer-grid{grid-template-columns:1fr}
+  .gal-grid{grid-template-columns:1fr 1fr;grid-auto-rows:140px}
+  .strip{gap:.9rem;padding:.85rem 1rem}
+  .pastors-row{grid-template-columns:1fr}
+  .motto-banner .chips{flex-direction:column;align-items:center}
+  .hero{min-height:80vh;padding:4rem 1.2rem}
+}
+
+/* -- Announcements display -- */
+.ann-display-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;margin-top:2rem}
+.ann-display-card{background:linear-gradient(135deg,rgba(200,153,26,.12),rgba(200,153,26,.05));border:1px solid rgba(200,153,26,.5);border-radius:12px;padding:1.3rem;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.ann-display-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.4)}
+.ann-display-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--gold),#9a7412)}
+.ann-display-title{font-family:'Cinzel',serif;font-size:.95rem;font-weight:600;color:var(--gold-lt);margin-bottom:.5rem}
+.ann-display-text{font-size:.85rem;color:rgba(214,221,232,.82);line-height:1.65}
+.ann-display-date{font-size:.7rem;color:rgba(200,153,26,.55);margin-top:.6rem}
