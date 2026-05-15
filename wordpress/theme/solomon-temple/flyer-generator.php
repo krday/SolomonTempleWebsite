@@ -200,7 +200,7 @@ body{font-family:'Source Sans 3',sans-serif;background:#06111e;color:#fff;min-he
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <div class="tool-header">
-  <div class="tool-header-brand">
+  <div class="tool-header-brand"><img src="<?php echo get_template_directory_uri(); ?>/images/stmbc-logo.png" alt="Solomon Temple Logo"/>
     <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Solomon Temple M.B.C." style="flex-shrink:0"><defs><linearGradient id="st-g" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse"><stop stop-color="#c8991a"/><stop offset="1" stop-color="#7a5a0e"/></linearGradient></defs><circle cx="20" cy="20" r="19" fill="url(#st-g)" stroke="rgba(232,184,48,.35)" stroke-width="1.5"/><line x1="20" y1="7" x2="20" y2="33" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><line x1="11" y1="14" x2="29" y2="14" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><circle cx="20" cy="20" r="3.5" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.5)" stroke-width="1"/></svg>
     <div class="tool-header-brand-text">
       <div class="th-name">Solomon Temple M.B.C.</div>
