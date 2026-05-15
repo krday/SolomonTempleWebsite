@@ -22,6 +22,9 @@ if ( empty( $_SESSION['st_admin_auth'] ) ) {
     exit;
 }
 // ── End gate ───────────────────────────────────────────────────────────────
+// Generate a short-lived token for REST API authorization
+$ann_token = bin2hex( random_bytes( 16 ) );
+set_transient( 'st_ann_token', $ann_token, 3600 );
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -153,7 +156,8 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--whi
 </div>
 
 <script>
-const ANN_API = '<?php echo esc_js(rest_url("st/v1/announcements")); ?>';
+const ANN_API   = '<?php echo esc_js(rest_url("st/v1/announcements")); ?>';
+const ANN_TOKEN = '<?php echo esc_js($ann_token); ?>';
 let data = [];
 
 async function loadAnn(){
@@ -168,8 +172,7 @@ async function loadAnn(){
 async function saveAnn(){
   const r = await fetch(ANN_API, {
     method: 'POST',
-    credentials: 'same-origin',
-    headers: {'Content-Type':'application/json'},
+    headers: {'Content-Type':'application/json','X-ST-Token': ANN_TOKEN},
     body: JSON.stringify(data)
   });
   if(!r.ok){ alert('Save failed. Please try again.'); }

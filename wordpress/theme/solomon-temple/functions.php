@@ -64,9 +64,9 @@ add_action( 'rest_api_init', function () {
                 return rest_ensure_response( $clean );
             },
             'permission_callback' => function ( WP_REST_Request $req ) {
-                if ( ! session_id() ) session_start();
-                return ! empty( $_SESSION['st_admin_auth'] )
-                    && ( time() - ( isset( $_SESSION['st_admin_auth_ts'] ) ? $_SESSION['st_admin_auth_ts'] : 0 ) ) < 28800;
+                $token  = $req->get_header( 'X-ST-Token' );
+                $stored = get_transient( 'st_ann_token' );
+                return $token && $stored && hash_equals( $stored, $token );
             },
         ],
     ] );
