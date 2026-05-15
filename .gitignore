@@ -1,0 +1,11 @@
+# Local notes and working documents
+FLYER_REBUILD_INSTRUCTIONS.md
+project-notes.md
+mothers-ministry-prompt.md
+
+# Local assets not part of the theme
+*.pdf
+solomon-temple-flyer*.png
+
+# Claude Code session data
+.claude/
