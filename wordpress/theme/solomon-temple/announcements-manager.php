@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 // ── PIN gate ───────────────────────────────────────────────────────────────
@@ -153,11 +153,26 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--whi
 </div>
 
 <script>
-let data = JSON.parse(localStorage.getItem('st_ann')||'[]');
+const ANN_API   = '<?php echo esc_js(rest_url("st/v1/announcements")); ?>';
+const ANN_NONCE = '<?php echo esc_js(wp_create_nonce("st_announcements")); ?>';
+let data = [];
 
-function saveAndRender(){
-  localStorage.setItem('st_ann', JSON.stringify(data));
+async function loadAnn(){
+  try {
+    const r = await fetch(ANN_API);
+    data = await r.json();
+    if(!Array.isArray(data)) data = [];
+  } catch(e){ data = []; }
   render();
+}
+
+async function saveAnn(){
+  const r = await fetch(ANN_API, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json','X-WP-Nonce': ANN_NONCE},
+    body: JSON.stringify(data)
+  });
+  if(!r.ok){ alert('Save failed. Please try again.'); }
 }
 
 function today(){ return new Date().toISOString().split('T')[0]; }
@@ -175,7 +190,7 @@ function fmtDate(d){
   return ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1]+' '+parseInt(day)+', '+y;
 }
 
-function addAnn(){
+async function addAnn(){
   const title = document.getElementById('inTitle').value.trim();
   const text  = document.getElementById('inText').value.trim();
   const start = document.getElementById('inStart').value;
@@ -185,16 +200,18 @@ function addAnn(){
   if(!start||!end){ alert('Please enter both dates.'); return; }
   if(end < start){ alert('End date must be after start date.'); return; }
   data.unshift({id:Date.now(), title, text, start, end});
-  saveAndRender();
+  await saveAnn();
+  render();
   document.getElementById('inTitle').value='';
   document.getElementById('inText').value='';
   setDefaultDates();
 }
 
-function delAnn(id){
+async function delAnn(id){
   if(!confirm('Delete this announcement?')) return;
   data = data.filter(a=>a.id!==id);
-  saveAndRender();
+  await saveAnn();
+  render();
 }
 
 function render(){
@@ -210,11 +227,11 @@ function render(){
       <div class="ann-body">
         <div class="ann-title">${a.title}</div>
         <div class="ann-text">${a.text}</div>
-        <div class="ann-dates">📅 ${fmtDate(a.start)} — ${fmtDate(a.end)}</div>
+        <div class="ann-dates">&#128197; ${fmtDate(a.start)} &mdash; ${fmtDate(a.end)}</div>
       </div>
       <div class="ann-right">
         <span class="ann-status ${s}">${s}</span>
-        <button class="btn-del" onclick="delAnn(${a.id})">✕ Delete</button>
+        <button class="btn-del" onclick="delAnn(${a.id})">&#x2715; Delete</button>
       </div>
     </div>`;
   }).join('');
@@ -228,7 +245,7 @@ function setDefaultDates(){
 }
 
 setDefaultDates();
-render();
+loadAnn();
 </script>
 <?php wp_footer(); ?>
 </body>

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Front Page Template
  */
@@ -160,38 +160,30 @@
     <span class="sec-label" style="color:var(--gold)">Stay Informed</span>
     <h2 class="sec-title" style="color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.6)">Church Announcements</h2>
     <div id="ann-display" class="ann-display-grid">
-      <!-- SAMPLE: remove this card when real announcements are added -->
-      <div class="ann-display-card" id="ann-sample">
-        <div class="ann-display-title">Family &amp; Friends Day</div>
-        <div class="ann-display-text">Family and Friends Day is next Sunday — please wear blue!! We look forward to celebrating with you. Invite someone special to join us!</div>
-      </div>
+      <?php
+      $ann_months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+      $ann_all    = json_decode(get_option("st_announcements","[]"),true) ?: [];
+      $ann_today  = date("Y-m-d");
+      $ann_active = array_values(array_filter($ann_all, function($a) use ($ann_today) {
+        return isset($a["start"],$a["end"]) && $a["start"] <= $ann_today && $a["end"] >= $ann_today;
+      }));
+      if (empty($ann_active)) : ?>
+        <div class="ann-display-card" style="text-align:center;color:rgba(214,221,232,.7);font-style:italic;grid-column:1/-1;padding:2rem">
+          There are no announcements at this time.
+        </div>
+      <?php else : foreach ($ann_active as $ann) :
+        $ann_parts  = explode("-", $ann["end"]);
+        $ann_endStr = $ann_months[(int)$ann_parts[1]-1]." ".(int)$ann_parts[2].", ".$ann_parts[0];
+      ?>
+        <div class="ann-display-card">
+          <div class="ann-display-title"><?php echo esc_html($ann["title"]); ?></div>
+          <div class="ann-display-text"><?php echo esc_html($ann["text"]); ?></div>
+          <div class="ann-display-date">Through <?php echo esc_html($ann_endStr); ?></div>
+        </div>
+      <?php endforeach; endif; ?>
     </div>
   </div>
 </section>
-
-<script>
-(function(){
-  try {
-    var saved = localStorage.getItem('st_ann');
-    if(!saved) return;
-    var all = JSON.parse(saved);
-    var today = new Date().toISOString().split('T')[0];
-    var active = all.filter(function(a){ return a.start <= today && a.end >= today; });
-    if(active.length === 0) return;
-    // Hide sample card since we have real announcements
-    var sample = document.getElementById('ann-sample');
-    if(sample) sample.remove();
-    var grid = document.getElementById('ann-display');
-    var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-    var cards = active.map(function(a){
-      var parts = a.end.split('-');
-      var endStr = months[parseInt(parts[1])-1]+' '+parseInt(parts[2])+', '+parts[0];
-      return '<div class="ann-display-card"><div class="ann-display-title">'+a.title+'</div><div class="ann-display-text">'+a.text+'</div><div class="ann-display-date">Through '+endStr+'</div></div>';
-    }).join('');
-    grid.innerHTML = cards;
-  } catch(e){}
-})();
-</script>
 
 
 <!-- ═══ PASTOR ═══ -->
