@@ -1,5 +1,28 @@
-<?php if ( ! defined( "ABSPATH" ) ) exit; ?>
-<!DOCTYPE html>
+<?php
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+// ── PIN gate ───────────────────────────────────────────────────────────────
+if ( ! session_id() ) session_start();
+
+define( 'ST_PIN_HASH', '2481982f08f27b3f86c38c49691301694409aa5513c77bf1c1e8db39d2e9bff5' );
+define( 'ST_PIN_SALT', 'st_solomon_temple_2024' );
+
+if ( isset( $_POST['st_pin'] ) ) {
+    $check = hash( 'sha256', trim( $_POST['st_pin'] ) . ST_PIN_SALT );
+    if ( hash_equals( ST_PIN_HASH, $check ) ) {
+        $_SESSION['st_admin_auth'] = true;
+    } else {
+        $GLOBALS['_st_pin_error'] = true;
+    }
+}
+
+if ( empty( $_SESSION['st_admin_auth'] ) ) {
+    $GLOBALS['_st_gate_title'] = 'Announcements Manager';
+    include get_template_directory() . '/pin-gate.php';
+    exit;
+}
+// ── End gate ───────────────────────────────────────────────────────────────
+?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>"/>
