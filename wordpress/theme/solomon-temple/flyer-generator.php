@@ -34,6 +34,10 @@ if ( empty( $_SESSION['st_admin_auth'] ) ) {
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--navy:#0e2260;--royal:#1b3d8f;--gold:#c8991a;--gold-lt:#e8b830;--gold-dim:#9a7412;--white:#fff}
 body{font-family:'Source Sans 3',sans-serif;background:#06111e;color:#fff;min-height:100vh;overflow-x:hidden}
+.staff-nav{background:rgba(14,34,96,.6);border-bottom:1px solid rgba(200,153,26,.15);padding:.5rem 1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap}
+.staff-nav a{color:rgba(232,184,48,.7);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;font-weight:600;transition:color .2s}
+.staff-nav a:hover{color:#e8b830}
+.staff-nav a.active{color:#e8b830;border-bottom:2px solid #c8991a;padding-bottom:.15rem}
 .app{display:grid;grid-template-columns:380px 1fr;min-height:calc(100vh - 58px)}
 /* ── TOOL HEADER ── */
 .tool-header{
@@ -209,6 +213,11 @@ body{font-family:'Source Sans 3',sans-serif;background:#06111e;color:#fff;min-he
   <div class="tool-header-title">Flyer Generator</div>
   <div class="tool-header-badge">Internal Use Only</div>
 </div>
+<nav class="staff-nav">
+  <a href="/staff-guide">Staff Guide</a>
+  <a href="/announcements-manager">Announcements</a>
+  <a href="/flyer-generator" class="active">Flyer Generator</a>
+</nav>
 <div class="app">
 
 <!-- ═══ SIDEBAR ═══ -->

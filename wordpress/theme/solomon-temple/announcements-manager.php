@@ -40,7 +40,11 @@ set_transient( 'st_ann_token', $ann_token, 3600 );
   --bg:#060e1e;--card:#0d1f4a;--border:rgba(200,153,26,.2);
   --text:rgba(214,221,232,.85);--radius:12px;
 }
-body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--white);min-height:100vh}
+body{font-family:'Source Sans 3',sans-serif;background:#060e1e !important;color:rgba(214,221,232,.85) !important;min-height:100vh}
+.staff-nav{background:rgba(14,34,96,.6);border-bottom:1px solid rgba(200,153,26,.15);padding:.5rem 1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap}
+.staff-nav a{color:rgba(232,184,48,.7);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;font-weight:600;transition:color .2s}
+.staff-nav a:hover{color:#e8b830}
+.staff-nav a.active{color:#e8b830;border-bottom:2px solid #c8991a;padding-bottom:.15rem}
 
 .page-header{
   background:linear-gradient(135deg,#0e2260,#1b3d8f);
@@ -128,6 +132,11 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--whi
   <h1>Announcements Manager</h1>
   <div class="page-header-badge">Internal Use Only</div>
 </div>
+<nav class="staff-nav">
+  <a href="/staff-guide">Staff Guide</a>
+  <a href="/announcements-manager" class="active">Announcements</a>
+  <a href="/flyer-generator">Flyer Generator</a>
+</nav>
 
 <div class="main">
 

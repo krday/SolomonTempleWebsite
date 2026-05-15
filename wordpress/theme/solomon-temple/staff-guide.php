@@ -37,7 +37,7 @@ if ( empty( $_SESSION['st_admin_auth'] ) ) {
   --bg:#060e1e;--card:#0d1f4a;--border:rgba(200,153,26,.2);
   --text:rgba(214,221,232,.85);--radius:12px;
 }
-body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+body{font-family:'Source Sans 3',sans-serif;background:#060e1e !important;color:rgba(214,221,232,.85) !important;min-height:100vh}
 
 /* ── PAGE HEADER ── */
 .page-header{
@@ -84,9 +84,9 @@ thead th{
   text-align:left;padding:.4rem .8rem;font-size:.72rem;letter-spacing:.07em;font-weight:700;
 }
 tbody tr:nth-child(even){background:rgba(255,255,255,.03)}
-tbody td{padding:.4rem .8rem;border-bottom:1px solid rgba(200,153,26,.08);color:var(--text)}
-tbody td:first-child{font-weight:600;color:#fff}
-code{font-family:'Courier New',monospace;font-size:.8rem;color:var(--gold-lt);background:rgba(200,153,26,.08);padding:.1rem .3rem;border-radius:3px}
+tbody td{padding:.4rem .8rem;border-bottom:1px solid rgba(200,153,26,.08);color:rgba(214,221,232,.85) !important}
+tbody td:first-child{font-weight:600;color:#fff !important}
+code{font-family:'Courier New',monospace;font-size:.8rem;color:#e8b830 !important;background:rgba(200,153,26,.08);padding:.1rem .3rem;border-radius:3px}
 
 /* ── SECTIONS ── */
 .section{margin-bottom:2rem}
@@ -109,11 +109,11 @@ h3{
 }
 h3::after{content:'';flex:1;height:1px;background:var(--border)}
 
-p{margin-bottom:.6rem;line-height:1.7}
+p{margin-bottom:.6rem;line-height:1.7;color:rgba(214,221,232,.85) !important}
 ol,ul{margin:.4rem 0 .8rem 1.4rem}
-li{margin-bottom:.3rem;line-height:1.65}
-li strong{color:#fff}
-strong{color:#fff}
+li{margin-bottom:.3rem;line-height:1.65;color:rgba(214,221,232,.85) !important}
+li strong{color:#fff !important}
+strong{color:#fff !important}
 
 .tip-box{
   background:rgba(27,61,143,.25);border:1px solid rgba(27,61,143,.4);
