@@ -96,10 +96,10 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--whi
 .ann-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--gold),var(--gold-dim))}
 .ann-card.expired{opacity:.4}
 .ann-card.expired::before{background:rgba(255,255,255,.15)}
-.ann-body{flex:1}
-.ann-title{font-family:'Cinzel',serif;font-size:.95rem;font-weight:600;color:var(--white);margin-bottom:.3rem}
-.ann-text{font-size:.85rem;color:var(--text);line-height:1.6}
-.ann-dates{font-size:.7rem;color:rgba(200,153,26,.6);margin-top:.4rem}
+.ann-body{flex:1;color:#fff}
+.ann-title{font-family:'Cinzel',serif;font-size:.95rem;font-weight:600;color:#fff !important;margin-bottom:.3rem}
+.ann-text{font-size:.85rem;color:rgba(214,221,232,.85) !important;line-height:1.6}
+.ann-dates{font-size:.7rem;color:rgba(200,153,26,.7) !important;margin-top:.4rem}
 .ann-right{display:flex;flex-direction:column;align-items:flex-end;gap:.5rem;flex-shrink:0}
 .ann-status{font-family:'Cinzel',serif;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .6rem;border-radius:50px;border:1px solid;white-space:nowrap}
 .ann-status.active{color:var(--gold-lt);border-color:rgba(200,153,26,.4);background:rgba(200,153,26,.12)}
