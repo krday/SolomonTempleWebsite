@@ -24,6 +24,7 @@ add_action( 'template_redirect', function () {
         'mothers-ministry'      => 'mothers-ministry.php',
         'announcements-manager' => 'announcements-manager.php',
         'flyer-generator'       => 'flyer-generator.php',
+        'staff-guide'           => 'staff-guide.php',
     ];
 
     if ( array_key_exists( $path, $routes ) ) {
