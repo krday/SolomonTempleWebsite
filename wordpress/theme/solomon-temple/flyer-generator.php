@@ -33,7 +33,7 @@ if ( empty( $_SESSION['st_admin_auth'] ) ) {
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--navy:#0e2260;--royal:#1b3d8f;--gold:#c8991a;--gold-lt:#e8b830;--gold-dim:#9a7412;--white:#fff}
-body{font-family:'Source Sans 3',sans-serif;background:#06111e;color:#fff;min-height:100vh;overflow-x:hidden}
+body{font-family:'Source Sans 3',sans-serif;background:#060e1e !important;color:#fff;min-height:100vh;overflow-x:hidden}
 .staff-nav{background:rgba(14,34,96,.6);border-bottom:1px solid rgba(200,153,26,.15);padding:.5rem 1.5rem;display:flex;gap:1.5rem;flex-wrap:wrap}
 .staff-nav a{color:rgba(232,184,48,.7);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;font-weight:600;transition:color .2s}
 .staff-nav a:hover{color:#e8b830}
