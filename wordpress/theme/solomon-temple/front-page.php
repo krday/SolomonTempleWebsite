@@ -125,35 +125,6 @@
   </div>
 </div>
 
-<!-- ═══ QUICK LINKS ═══ -->
-<section class="ql" id="quicklinks">
-  <div class="container">
-    <span class="sec-label">How Can We Help?</span>
-    <h2 class="sec-title">We're Here for You</h2>
-    <div class="divider"></div>
-    <div class="ql-grid">
-      <a href="#giving" class="ql-card">
-        <div class="qico">💛</div>
-        <h3>Give Online</h3>
-        <p>Support the ministry securely - one-time or recurring giving.</p>
-      </a>
-      <a href="#prayer" class="ql-card">
-        <div class="qico">🙏</div>
-        <h3>Prayer Request</h3>
-        <p>Our prayer team lifts every request before the Lord.</p>
-      </a>
-      <a href="#media" class="ql-card">
-        <div class="qico">▶️</div>
-        <h3>Watch a Sermon</h3>
-        <p>Live on YouTube &amp; Facebook every Sunday at 10 AM. Past sermons archived on YouTube.</p>
-      </a>
-      <a href="#new-members" class="ql-card">
-        <p>Interested in joining our family? Learn about New Member Orientation.</p>
-      </a>
-    </div>
-  </div>
-</section>
-
 <!-- ═══ ANNOUNCEMENTS ═══ -->
 <section class="announcements-sec" id="announcements" style="padding:4rem 0;background:linear-gradient(180deg,#0a1628,#0e2260);border-top:3px solid rgba(200,153,26,.4);border-bottom:3px solid rgba(200,153,26,.4)">
   <div class="container">
@@ -181,6 +152,35 @@
           <div class="ann-display-date">Through <?php echo esc_html($ann_endStr); ?></div>
         </div>
       <?php endforeach; endif; ?>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ QUICK LINKS ═══ -->
+<section class="ql" id="quicklinks">
+  <div class="container">
+    <span class="sec-label">How Can We Help?</span>
+    <h2 class="sec-title">We're Here for You</h2>
+    <div class="divider"></div>
+    <div class="ql-grid">
+      <a href="#giving" class="ql-card">
+        <div class="qico">💛</div>
+        <h3>Give Online</h3>
+        <p>Support the ministry securely - one-time or recurring giving.</p>
+      </a>
+      <a href="#prayer" class="ql-card">
+        <div class="qico">🙏</div>
+        <h3>Prayer Request</h3>
+        <p>Our prayer team lifts every request before the Lord.</p>
+      </a>
+      <a href="#media" class="ql-card">
+        <div class="qico">▶️</div>
+        <h3>Watch a Sermon</h3>
+        <p>Live on YouTube &amp; Facebook every Sunday at 10 AM. Past sermons archived on YouTube.</p>
+      </a>
+      <a href="#new-members" class="ql-card">
+        <p>Interested in joining our family? Learn about New Member Orientation.</p>
+      </a>
     </div>
   </div>
 </section>
@@ -722,8 +722,8 @@
         <h5>Quick Links</h5>
         <ul>
           <li><a href="#about">Our Pastor</a></li>
-          <li><a href="#announcements">Announcements</a>
-          <a href="#ministries">Ministries</a></li>
+          <li><a href="#announcements">Announcements</a></li>
+          <li><a href="#ministries">Ministries</a></li>
           <li><a href="#gallery">Photo Gallery</a></li>
           <li><a href="#events">Church Calendar</a></li>
           <li><a href="#giving">Give Online</a></li>
@@ -736,8 +736,8 @@
           <li><a href="#history">Church History</a></li>
           <li><a href="#church">Our Building</a></li>
           <li><a href="#history">Past Pastors</a></li>
-          <li><a href="#announcements">Announcements</a>
-          <a href="#ministries">Ministries</a></li>
+          <li><a href="#announcements">Announcements</a></li>
+          <li><a href="#ministries">Ministries</a></li>
           <li><a href="#new-members">New Members</a></li>
         </ul>
       </div>
