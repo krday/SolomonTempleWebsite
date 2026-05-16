@@ -401,6 +401,76 @@ strong{color:#fff !important}
     </div>
   </div>
 
+  <!-- SECTION 9: RESTREAM -->
+  <div class="section">
+    <div class="section-header"><div class="section-num">9</div><h2>Restream &mdash; Live Streaming</h2></div>
+    <p>Restream broadcasts the Sunday service live to Facebook and YouTube at the same time.</p>
+
+    <h3>Before You Go Live &mdash; Do This Every Week</h3>
+    <ol>
+      <li>Open Restream Studio at least <strong>30 minutes before service</strong></li>
+      <li>Click the <strong>microphone icon</strong></li>
+      <li>Select the <strong>soundboard input</strong> &mdash; do not select Default or Built-in Microphone</li>
+      <li>Play audio through the board and confirm the <strong>audio bar jumps</strong></li>
+      <li>Click <strong>Preview</strong> and confirm audio and video look correct</li>
+      <li>Close all unnecessary browser tabs and apps &mdash; only keep what is needed for service</li>
+      <li>Set computer power to <strong>Never Sleep</strong></li>
+      <li>Assign one person to watch the stream on a phone during service</li>
+      <li>Click <strong>Go Live</strong> only after audio and video are confirmed</li>
+    </ol>
+
+    <h3>How to Use Preview</h3>
+    <ol>
+      <li>Open Restream Studio</li>
+      <li>Click <strong>Preview</strong> instead of Go Live</li>
+      <li>Confirm the audio bar jumps with the soundboard</li>
+      <li>End preview when satisfied, then click <strong>Go Live</strong></li>
+    </ol>
+
+    <h3>How to Do a Private Test Stream on YouTube</h3>
+    <ol>
+      <li>Go to <strong>studio.youtube.com</strong></li>
+      <li>Click <strong>Go Live</strong></li>
+      <li>Set Visibility to <strong>Private</strong></li>
+      <li>Copy the <strong>Stream Key</strong> and paste it into Restream</li>
+      <li>Confirm audio and video are correct</li>
+      <li>End and delete the test stream when done</li>
+    </ol>
+
+    <h3>If Audio Drops Mid Stream</h3>
+    <ol>
+      <li>Click the <strong>microphone icon</strong> in Restream Studio</li>
+      <li>Reselect the <strong>soundboard input</strong> if it has changed</li>
+      <li>Wait 10 seconds</li>
+      <li>If audio does not restore, end the stream</li>
+      <li>Reselect the correct audio source before going live again</li>
+      <li>Click <strong>Go Live</strong></li>
+      <li>Post a comment on Facebook and YouTube letting viewers know you are restarting</li>
+    </ol>
+
+    <h3>If the Stream Freezes or Cuts Out</h3>
+    <ol>
+      <li>Click <strong>End Stream</strong></li>
+      <li>Wait 30 seconds</li>
+      <li>Reselect the correct audio source</li>
+      <li>Click <strong>Go Live</strong></li>
+      <li>Post a comment on Facebook and YouTube letting viewers know you are restarting</li>
+    </ol>
+
+    <h3>Common Problems and Fixes</h3>
+    <table>
+      <thead><tr><th>Problem</th><th>Fix</th></tr></thead>
+      <tbody>
+        <tr><td>Audio bar moves but viewers hear nothing</td><td>Click mic icon and select the soundboard input</td></tr>
+        <tr><td>Restarting does not fix the audio</td><td>Reselect the correct audio source before going live again</td></tr>
+        <tr><td>Audio cuts out mid stream</td><td>Keep Restream tab active &mdash; never minimize or switch tabs</td></tr>
+        <tr><td>Everything cuts out</td><td>Disable computer sleep mode before every service</td></tr>
+      </tbody>
+    </table>
+
+    <div class="warn-box"><strong>The Golden Rule:</strong> Always confirm the audio source before going live. Restarting with the wrong source selected will produce the same problem every time.</div>
+  </div>
+
 </div>
 
 <?php wp_footer(); ?>
