@@ -368,8 +368,24 @@ section{padding:5rem 1.5rem}
 .prayer-form .wpforms-field input:focus,.prayer-form .wpforms-field textarea:focus{border-color:var(--gold)}
 .prayer-form .wpforms-field textarea{min-height:120px;resize:vertical}
 .prayer-form .wpforms-submit-container{margin-top:1.1rem}
-.prayer-form .wpforms-submit{width:100%;justify-content:center;font-size:1rem;border:none;background:var(--gold);color:var(--royal-dk);padding:.85rem 2rem;border-radius:8px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s,transform .15s}
-.prayer-form .wpforms-submit:hover{background:var(--gold-lt);transform:translateY(-2px)}
+.prayer-form .wpforms-submit{
+  display:block !important;
+  width:100% !important;
+  background:var(--gold) !important;
+  color:var(--royal-dk) !important;
+  border:none !important;
+  border-radius:8px !important;
+  padding:.85rem 2rem !important;
+  font-family:'Source Sans 3',sans-serif !important;
+  font-size:1rem !important;
+  font-weight:700 !important;
+  letter-spacing:.03em !important;
+  cursor:pointer !important;
+  transition:background .2s,transform .15s;
+  text-align:center !important;
+  box-shadow:none !important;
+}
+.prayer-form .wpforms-submit:hover{background:var(--gold-lt) !important;color:var(--royal-dk) !important;transform:translateY(-2px)}
 .prayer-form .wpforms-field-sublabel{display:none}
 .prayer-form .wpforms-error{color:#c0392b;font-size:.78rem;margin-top:.25rem}
 .verse-block{background:var(--royal-dk);border-left:4px solid var(--gold);padding:1.3rem 1.4rem;border-radius:0 var(--radius) var(--radius) 0;margin-bottom:1.3rem}
