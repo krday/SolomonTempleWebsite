@@ -84,9 +84,9 @@ thead th{
   text-align:left;padding:.4rem .8rem;font-size:.72rem;letter-spacing:.07em;font-weight:700;
 }
 tbody tr:nth-child(even){background:rgba(255,255,255,.03)}
-tbody td{padding:.4rem .8rem;border-bottom:1px solid rgba(200,153,26,.08);color:rgba(214,221,232,.85) !important}
+tbody td{padding:.4rem .8rem;border-bottom:1px solid rgba(200,153,26,.08);color:rgba(214,221,232,.85) !important;word-break:break-word;overflow-wrap:anywhere}
 tbody td:first-child{font-weight:600;color:#fff !important}
-code{font-family:'Courier New',monospace;font-size:.8rem;color:#e8b830 !important;background:rgba(200,153,26,.08);padding:.1rem .3rem;border-radius:3px}
+code{font-family:'Courier New',monospace;font-size:.8rem;color:#e8b830 !important;background:rgba(200,153,26,.08);padding:.1rem .3rem;border-radius:3px;word-break:break-all}
 
 /* ── SECTIONS ── */
 .section{margin-bottom:2rem}
@@ -146,6 +146,9 @@ strong{color:#fff !important}
   .main{padding:1.2rem 1rem}
   .staff-nav{gap:1rem;padding:.5rem 1rem}
   table{font-size:.78rem}
+  .page-header{flex-wrap:wrap;gap:.5rem}
+  .page-header h1{font-size:.85rem;order:3;width:100%;text-align:left;padding-top:.1rem}
+  .page-header-badge{display:none}
 }
 </style>
 <?php wp_head(); ?>

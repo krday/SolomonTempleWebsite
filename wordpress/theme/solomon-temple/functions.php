@@ -21,7 +21,6 @@ add_action( 'template_redirect', function () {
     $path = trim( parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ), '/' );
 
     $routes = [
-        'mothers-ministry'      => 'mothers-ministry.php',
         'announcements-manager' => 'announcements-manager.php',
         'flyer-generator'       => 'flyer-generator.php',
         'staff-guide'           => 'staff-guide.php',

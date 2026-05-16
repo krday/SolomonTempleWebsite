@@ -116,6 +116,9 @@ body{font-family:'Source Sans 3',sans-serif;background:#060e1e !important;color:
 @media(max-width:600px){
   .form-row,.date-row{grid-template-columns:1fr}
   .main{padding:1.2rem 1rem}
+  .page-header{flex-wrap:wrap;gap:.5rem}
+  .page-header h1{font-size:.85rem;order:3;width:100%;text-align:left;padding-top:.1rem}
+  .page-header-badge{display:none}
 }
 </style>
 <?php wp_head(); ?>

@@ -198,6 +198,7 @@ body{font-family:'Source Sans 3',sans-serif;background:#060e1e !important;color:
 .f-photo-mini img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
 
 @media(max-width:900px){.app{grid-template-columns:1fr}.preview-area{order:-1}.flyer{width:100%;min-width:0}}
+@media(max-width:600px){.tool-header{flex-wrap:wrap;gap:.5rem}.tool-header-title{font-size:.85rem;order:3;width:100%;text-align:left;padding-top:.1rem}.tool-header-badge{display:none}}
 </style>
 <?php wp_head(); ?>
 </head>
